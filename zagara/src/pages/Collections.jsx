@@ -19,10 +19,17 @@ const Collections = () => {
             <h1 className="collections-title">{t('collections.title')}</h1>
 
             <div className="collections-grid">
-                {collections.map((model) => (
+                {collections.map((model, index) => (
                     <motion.div
                         key={model.id}
                         className="collection-card"
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{
+                            duration: 0.4,
+                            delay: index * 0.05, // Very fast stagger
+                            ease: "easeOut"
+                        }}
                         whileHover={{ scale: 1.02 }}
                         onClick={() => setSelectedId(model.id)}
                         layoutId={`card-${model.id}`}
