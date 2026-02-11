@@ -37,8 +37,9 @@ const CollectionPreview = () => {
                                 whileInView="visible"
                                 viewport={{ once: true, margin: "-10%" }}
                                 variants={imageVariants}
+                                style={{ mixBlendMode: look.blendMode || 'multiply' }}
                             >
-                                <img src={look.images[0]} alt={look.name} className="look-image" style={{ mixBlendMode: look.blendMode || 'multiply' }} />
+                                <img src={look.images[0]} alt={look.name} className="look-image" />
                             </motion.div>
                         </Link>
                         <div className="look-info">
