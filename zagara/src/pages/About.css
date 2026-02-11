@@ -136,8 +136,18 @@
 }
 
 @media (max-width: 768px) {
+
+    .about-hero,
+    .mission-vision,
+    .values-section {
+        padding: 6rem 1.5rem;
+    }
+
+    .about-history {
+        padding: 0 1.5rem 4rem;
+    }
+
     .text-columns {
-        grid-template-columns: 1fr;
         gap: 2rem;
     }
 
@@ -146,11 +156,19 @@
         gap: 3rem;
     }
 
+    .mv-card {
+        padding: 0;
+    }
+
     .about-title {
         font-size: 2.5rem;
     }
 
     .lead-text {
-        font-size: 1.2rem;
+        font-size: 1.3rem;
+    }
+
+    .values-grid {
+        grid-template-columns: 1fr;
     }
 }

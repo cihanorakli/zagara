@@ -31,3 +31,16 @@
         cursor: none;
     }
 }
+
+/* Hide custom cursor on touch devices */
+@media (hover: none) and (pointer: coarse) {
+
+    .cursor-dot,
+    .cursor-ring {
+        display: none !important;
+    }
+
+    body {
+        cursor: auto;
+    }
+}

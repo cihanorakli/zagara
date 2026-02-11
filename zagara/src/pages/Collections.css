@@ -96,7 +96,6 @@
     width: 100%;
     height: 100%;
     background-color: rgba(244, 242, 239, 0.9);
-    /* Alabaster with opacity */
     backdrop-filter: blur(5px);
     z-index: 200;
     display: flex;
@@ -138,9 +137,7 @@
     position: relative;
     background-color: var(--color-alabaster);
     overflow-y: auto;
-    /* Allow scrolling for gallery */
     max-height: 90vh;
-    /* Hide scrollbar for cleaner look */
     scrollbar-width: none;
     -ms-overflow-style: none;
 }
@@ -158,7 +155,6 @@
 .modal-image {
     width: 100%;
     height: auto;
-    /* Allow height to adjust */
     min-height: 100%;
     object-fit: cover;
     display: block;
@@ -194,7 +190,6 @@
     line-height: 1.6;
     opacity: 0.8;
     margin-bottom: 2rem;
-    /* Reduced from 4rem */
 }
 
 .modal-contact-link {
@@ -241,5 +236,32 @@
 
     .modal-title {
         font-size: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .collections-page {
+        padding: 6rem 1.5rem 4rem;
+    }
+
+    .collections-title {
+        font-size: 2.5rem;
+        margin-bottom: 3rem;
+    }
+
+    .collections-grid {
+        grid-template-columns: repeat(1, 1fr);
+        /* Force 1 column on mobile */
+        gap: 2rem;
+    }
+
+    .modal-overlay {
+        padding: 0;
+    }
+
+    .modal-content {
+        max-height: 100vh;
+        height: 100vh;
+        border-radius: 0;
     }
 }

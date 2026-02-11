@@ -71,7 +71,6 @@ textarea {
     color: var(--color-charcoal);
     transition: border-color 0.3s ease;
     border-radius: 0;
-    /* Remove default border-radius on iOS */
 }
 
 input:focus,
@@ -104,18 +103,6 @@ select {
     background-color: black;
     transform: translateY(-2px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-}
-
-@media (max-width: 768px) {
-    .form-row {
-        flex-direction: column;
-        gap: 2rem;
-    }
-
-    .submit-button {
-        width: 100%;
-        text-align: center;
-    }
 }
 
 .success-message {
@@ -163,4 +150,24 @@ select {
     font-family: var(--font-body);
     font-size: 0.9rem;
     margin-top: 1rem;
+}
+
+@media (max-width: 768px) {
+    .contact-page {
+        padding: 6rem 1.5rem 4rem;
+    }
+
+    .form-row {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .submit-button {
+        width: 100%;
+        text-align: center;
+    }
+
+    .contact-header {
+        margin-bottom: 3rem;
+    }
 }
