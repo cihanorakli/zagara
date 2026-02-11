@@ -1,27 +1,29 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { collectionData } from '../data/collections';
-import './Collections.css';
 import { X } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import './Collections.css';
 import { useLanguage } from '../context/LanguageContext';
+import { useCollections } from '../hooks/useCollections';
+import { Link } from 'react-router-dom';
 
 const Collections = () => {
-    const [selectedModel, setSelectedModel] = useState(null);
     const { t, language } = useLanguage();
+    const { collections, loading } = useCollections();
+    const [selectedId, setSelectedId] = useState(null);
+    const selectedItem = collections.find(item => item.id === selectedId);
 
     return (
         <div className="collections-page">
             <h1 className="collections-title">{t('collections.title')}</h1>
 
             <div className="collections-grid">
-                {collectionData.map((model) => (
+                {collections.map((item) => (
                     <motion.div
-                        key={model.id}
+                        key={item.id}
                         className="collection-card"
                         whileHover={{ scale: 1.02 }}
-                        onClick={() => setSelectedModel(model)}
-                        layoutId={`card-${model.id}`}
+                        onClick={() => setSelectedId(item.id)}
+                        layoutId={`card-${item.id}`}
                     >
                         <div className="card-image-wrapper">
                             <motion.img

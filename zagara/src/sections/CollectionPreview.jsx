@@ -1,15 +1,19 @@
 import { motion } from 'framer-motion';
 import { sectionVariants, imageVariants } from '../utils/anim';
-import { collectionData } from '../data/collections';
 import { Link } from 'react-router-dom';
 import './CollectionPreview.css';
 import { useLanguage } from '../context/LanguageContext';
+import { useCollections } from '../hooks/useCollections';
 
 const CollectionPreview = () => {
     const { t, language } = useLanguage();
-    // Select 3 featured looks (e.g., Black Dahlia, Crimson Rose, Emerald Ivy)
-    // Adjust indices to pick preferred models. Here using 0, 1, and 5 (Black, Red, Green)
-    const featuredLooks = [collectionData[0], collectionData[1], collectionData[5]].map((item, index) => ({
+    const { collections, loading } = useCollections();
+
+    // While loading, we could show skeleton or nothing. 
+    // Since we have fallback, 'collections' will be maintained.
+
+    // Select first 3 items as featured
+    const featuredLooks = collections.slice(0, 3).map((item, index) => ({
         ...item,
         align: index === 0 ? "left" : index === 1 ? "right" : "center",
         offset: index === 0 ? "0px" : index === 1 ? "120px" : "60px"
