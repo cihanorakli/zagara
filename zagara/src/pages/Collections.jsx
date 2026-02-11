@@ -10,6 +10,8 @@ const Collections = () => {
     const { t, language } = useLanguage();
     const { collections, loading } = useCollections();
     const [selectedId, setSelectedId] = useState(null);
+
+    // Find selected item from the dynamic collections array
     const selectedItem = collections.find(item => item.id === selectedId);
 
     return (
@@ -17,13 +19,13 @@ const Collections = () => {
             <h1 className="collections-title">{t('collections.title')}</h1>
 
             <div className="collections-grid">
-                {collections.map((item) => (
+                {collections.map((model) => (
                     <motion.div
-                        key={item.id}
+                        key={model.id}
                         className="collection-card"
                         whileHover={{ scale: 1.02 }}
-                        onClick={() => setSelectedId(item.id)}
-                        layoutId={`card-${item.id}`}
+                        onClick={() => setSelectedId(model.id)}
+                        layoutId={`card-${model.id}`}
                     >
                         <div className="card-image-wrapper">
                             <motion.img
@@ -46,45 +48,45 @@ const Collections = () => {
             </div>
 
             <AnimatePresence>
-                {selectedModel && (
-                    <div className="modal-overlay" onClick={() => setSelectedModel(null)}>
+                {selectedItem && (
+                    <div className="modal-overlay" onClick={() => setSelectedId(null)}>
                         <motion.div
                             className="modal-content"
-                            layoutId={`card-${selectedModel.id}`}
+                            layoutId={`card-${selectedItem.id}`}
                             onClick={(e) => e.stopPropagation()}
                         >
-                            <button className="close-button" onClick={() => setSelectedModel(null)}>
+                            <button className="close-button" onClick={() => setSelectedId(null)}>
                                 <X size={24} />
                             </button>
 
                             <div className="modal-image-container">
                                 <div className="modal-gallery">
-                                    {selectedModel.images.map((img, index) => (
+                                    {selectedItem.images.map((img, index) => (
                                         <motion.img
                                             key={index}
                                             src={img}
-                                            alt={`${selectedModel.name} view ${index + 1}`}
+                                            alt={`${selectedItem.name} view ${index + 1}`}
                                             className="modal-image"
                                             initial={{ opacity: 0, y: 20 }}
                                             animate={{ opacity: 1, y: 0 }}
                                             transition={{ delay: 0.2 + (index * 0.1) }}
-                                            style={{ mixBlendMode: selectedModel.blendMode || 'multiply' }}
+                                            style={{ mixBlendMode: selectedItem.blendMode || 'multiply' }}
                                         />
                                     ))}
                                 </div>
                             </div>
 
-                            <motion.div className="modal-details" layoutId={`info-${selectedModel.id}`}>
-                                <h2 className="modal-title">{selectedModel.name}</h2>
-                                <span className="modal-color">{selectedModel.color} Series</span>
-                                <p className="modal-description">{selectedModel[`description_${language}`] || selectedModel.description}</p>
-                                {selectedModel.contactText && (
+                            <motion.div className="modal-details" layoutId={`info-${selectedItem.id}`}>
+                                <h2 className="modal-title">{selectedItem.name}</h2>
+                                <span className="modal-color">{selectedItem.color} Series</span>
+                                <p className="modal-description">{selectedItem[`description_${language}`] || selectedItem.description}</p>
+                                {selectedItem.contactText && (
                                     <Link to="/contact" className="modal-contact-link">
-                                        {selectedModel[`contactText_${language}`] || selectedModel.contactText}
+                                        {selectedItem[`contactText_${language}`] || selectedItem.contactText}
                                     </Link>
                                 )}
                                 <div className="modal-footer">
-                                    <span>{selectedModel.season || "Collection 2026"}</span>
+                                    <span>{selectedItem.season || "Collection 2026"}</span>
                                     <span>{t('collections.uniquePiece')}</span>
                                 </div>
                             </motion.div>
