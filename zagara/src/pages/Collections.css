@@ -140,6 +140,7 @@
     max-height: 90vh;
     scrollbar-width: none;
     -ms-overflow-style: none;
+    overscroll-behavior: contain;
 }
 
 .modal-image-container::-webkit-scrollbar {
@@ -227,11 +228,18 @@
     }
 
     .modal-image-container {
-        height: 50vh;
+        height: auto;
+        max-height: 60vh;
+        flex: none;
+        overflow-y: auto;
+        /* Ensure touch scrolling works smoothly */
+        -webkit-overflow-scrolling: touch;
     }
 
     .modal-details {
         padding: 2rem;
+        flex: none;
+        /* Let it take natural size */
     }
 
     .modal-title {
@@ -257,11 +265,23 @@
 
     .modal-overlay {
         padding: 0;
+        align-items: flex-end;
+        /* Sheet-like behavior or just center? Center is fine. */
     }
 
     .modal-content {
         max-height: 100vh;
+        /* Full height */
         height: 100vh;
         border-radius: 0;
+    }
+
+    /* Make images full width and nice on mobile */
+    .modal-image-container {
+        max-height: 50vh;
+        /* Limit image area so details are visible? or let it be flexible? */
+        /* If user wants standard vertical scroll, maybe letting images take space is okay, 
+           but we need to make sure they can reach details. 
+           Let's stick to a scrollable top area for images if there are many. */
     }
 }

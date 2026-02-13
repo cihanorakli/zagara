@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X } from 'lucide-react';
 import './Collections.css';
@@ -13,6 +13,21 @@ const Collections = () => {
 
     // Find selected item from the dynamic collections array
     const selectedItem = collections.find(item => item.id === selectedId);
+
+    // Lock body scroll when modal is open
+    useEffect(() => {
+        if (selectedId) {
+            document.body.style.overflow = 'hidden';
+            document.documentElement.style.overflow = 'hidden'; // Lock html as well
+        } else {
+            document.body.style.overflow = 'unset';
+            document.documentElement.style.overflow = 'unset';
+        }
+        return () => {
+            document.body.style.overflow = 'unset';
+            document.documentElement.style.overflow = 'unset';
+        };
+    }, [selectedId]);
 
     return (
         <div className="collections-page">
