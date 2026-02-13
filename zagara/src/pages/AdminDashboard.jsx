@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { auth, db } from '../firebase';
 import { signOut, onAuthStateChanged } from 'firebase/auth';
 import { collection, getDocs, addDoc, deleteDoc, doc } from 'firebase/firestore';
+import { collectionData } from '../data/collections';
 import './Admin.css';
 
 const AdminDashboard = () => {
@@ -100,14 +101,62 @@ const AdminDashboard = () => {
         navigate('/admincihan');
     };
 
+    // ... removed misplaced import
+
+    // ... (inside component)
+
+    // Bulk Add / Demo Data
+    const handleBulkAdd = async () => {
+        if (!window.confirm('Bu işlem 6 adet demo koleksiyon ürününü veritabanına ekleyecek. Onaylıyor musunuz?')) return;
+
+        setLoading(true);
+        try {
+            const promises = collectionData.map(item => {
+                // Ensure images are strings
+                const images = Array.isArray(item.images) ? item.images : [item.images];
+                // Convert imported image paths to something usable if needed, 
+                // but here we can just store the path strings. 
+                // Note: Local import paths like "/src/assets/..." might work on localhost 
+                // but for production, real URLs are better. 
+                // However, for "demo" purposes, this is fine.
+
+                return addDoc(collection(db, "collections"), {
+                    name: item.name,
+                    description_en: item.description_en || item.description,
+                    description_tr: item.description_tr || item.description,
+                    contactText_en: item.contactText_en || item.contactText,
+                    contactText_tr: item.contactText_tr || item.contactText,
+                    season: item.season || '2025 Collection',
+                    images: images,
+                    createdAt: new Date()
+                });
+            });
+
+            await Promise.all(promises);
+            alert('Demo veriler başarıyla yüklendi!');
+            fetchCollections();
+        } catch (error) {
+            console.error("Bulk add error:", error);
+            alert("Hata oluştu: " + error.message);
+        } finally {
+            setLoading(false);
+        }
+    };
+
     if (loading && !collections.length) return <div className="admin-login-page">Yükleniyor...</div>;
 
     return (
         <div className="admin-dashboard">
             <header className="dashboard-header">
-                <h1 className="dashboard-title">Admin Dashboard</h1>
+                <div>
+                    <h1 className="dashboard-title">Admin Dashboard</h1>
+                    <p style={{ opacity: 0.6, fontSize: '0.9rem', marginTop: '0.5rem' }}>İçerik Yönetim Paneli</p>
+                </div>
                 <div className="user-info">
                     <span style={{ marginRight: '1rem' }}>{user?.email}</span>
+                    <button onClick={handleBulkAdd} className="submit-button" style={{ marginRight: '1rem', backgroundColor: '#4CAF50' }}>
+                        Demo İçerik Yükle (Hızlı)
+                    </button>
                     <button onClick={handleLogout} className="btn-logout">Çıkış Yap</button>
                 </div>
             </header>

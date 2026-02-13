@@ -12,21 +12,28 @@ import royalIris2 from '../assets/royal-iris-2.jpg';
 import whiteOrchid1White from '../assets/white-orchid-1-white.png';
 import whiteOrchid2White from '../assets/white-orchid-2-white.png';
 import whiteOrchid3White from '../assets/white-orchid-3-white.png';
-import whiteOrchid1 from '../assets/white-orchid-1.jpg';
-import whiteOrchid2 from '../assets/white-orchid-2.jpg';
-import whiteOrchid3 from '../assets/white-orchid-3.jpg';
 import sapphireStorm1White from '../assets/sapphire-storm-1-white.png';
 import sapphireStorm2White from '../assets/sapphire-storm-2-white.png';
 import sapphireStorm3White from '../assets/sapphire-storm-3-white.png';
-import sapphireStorm1 from '../assets/sapphire-storm-1.jpg';
-import sapphireStorm2 from '../assets/sapphire-storm-2.jpg';
-import sapphireStorm3 from '../assets/sapphire-storm-3.jpg';
 import emeraldIvy1 from '../assets/emerald-ivy-1.jpg';
 import emeraldIvy2 from '../assets/emerald-ivy-2.jpg';
 import emeraldIvy3 from '../assets/emerald-ivy-3.jpg';
 
 // Placeholder images for now, will be updated when user sends specific photos
 export const collectionData = [
+    {
+        id: 7,
+        name: "Blue Hyacinth",
+        color: "Royal Blue",
+        images: [sapphireStorm1White], // Placeholder: User needs to replace with actual image
+        description: "Elegance meets royalty in the Blue Hyacinth. Crafted from luxurious satin, this gown boasts a crystal-embellished V-neckline and striking bishop sleeves. The matching belt defines the waist, flowing into a rich, floor-length skirt that commands attention at any gala.",
+        description_en: "Elegance meets royalty in the Blue Hyacinth. Crafted from luxurious satin, this gown boasts a crystal-embellished V-neckline and striking bishop sleeves. The matching belt defines the waist, flowing into a rich, floor-length skirt that commands attention at any gala.",
+        description_tr: "Blue Hyacinth ile zarafet asaletle buluşuyor. Lüks satenden tasarlanan bu elbise, kristal işlemeli V yakası ve iddialı kolları ile göz kamaştırıyor. Beli vurgulayan kemeri ve yere kadar uzanan zengin eteğiyle, her davette tüm bakışları üzerinize çekecek.",
+        contactText: "Please contact us for other available colors and further dress details.",
+        contactText_en: "Please contact us for other available colors and further dress details.",
+        contactText_tr: "Diğer renk seçenekleri ve elbise detayları için lütfen bizimle iletişime geçin.",
+        season: "2025 Spring"
+    },
     {
         id: 1,
         name: "Black Dahlia",
@@ -37,6 +44,7 @@ export const collectionData = [
         description_tr: "Black Dahlia ile saf zarafeti deneyimleyin. Bu çarpıcı saten elbise, sofistike boncuklu bir pelerin ve beli vurgulayan kuşağı ile 'Eski Hollywood' ihtişamını modern bir dokunuşla harmanlıyor. Herhangi bir resmi etkinlikte unutulmaz bir giriş yapmak için mükemmel.",
         contactText: "Please contact us for other available colors and further dress details.",
         contactText_en: "Please contact us for other available colors and further dress details.",
+        contactText_tr: "Diğer renk seçenekleri ve elbise detayları için lütfen bizimle iletişime geçin.",
         contactText_tr: "Diğer renk seçenekleri ve elbise detayları için lütfen bizimle iletişime geçin.",
         season: "2025 Spring"
     },
