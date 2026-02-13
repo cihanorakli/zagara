@@ -18,6 +18,7 @@ import sapphireStorm3White from '../assets/sapphire-storm-3-white.png';
 import emeraldIvy1 from '../assets/emerald-ivy-1.jpg';
 import emeraldIvy2 from '../assets/emerald-ivy-2.jpg';
 import emeraldIvy3 from '../assets/emerald-ivy-3.jpg';
+import blueHyacinth1 from '../assets/sapphire-storm-1-white.png'; // Placeholder until user adds real file
 
 // Placeholder images for now, will be updated when user sends specific photos
 export const collectionData = [
@@ -25,7 +26,7 @@ export const collectionData = [
         id: 7,
         name: "Blue Hyacinth",
         color: "Royal Blue",
-        images: [sapphireStorm1White], // Placeholder: User needs to replace with actual image
+        images: [blueHyacinth1],
         description: "Elegance meets royalty in the Blue Hyacinth. Crafted from luxurious satin, this gown boasts a crystal-embellished V-neckline and striking bishop sleeves. The matching belt defines the waist, flowing into a rich, floor-length skirt that commands attention at any gala.",
         description_en: "Elegance meets royalty in the Blue Hyacinth. Crafted from luxurious satin, this gown boasts a crystal-embellished V-neckline and striking bishop sleeves. The matching belt defines the waist, flowing into a rich, floor-length skirt that commands attention at any gala.",
         description_tr: "Blue Hyacinth ile zarafet asaletle buluşuyor. Lüks satenden tasarlanan bu elbise, kristal işlemeli V yakası ve iddialı kolları ile göz kamaştırıyor. Beli vurgulayan kemeri ve yere kadar uzanan zengin eteğiyle, her davette tüm bakışları üzerinize çekecek.",
