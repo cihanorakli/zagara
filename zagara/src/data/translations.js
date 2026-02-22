@@ -1,7 +1,7 @@
 export const translations = {
     en: {
         navbar: {
-            brand: "Zagara",
+            brand: "ORAKLI TEKSTİL",
             collections: "Collections",
             atelier: "The Atelier",
             contact: "Contact"
@@ -102,7 +102,7 @@ export const translations = {
     },
     tr: {
         navbar: {
-            brand: "Zagara",
+            brand: "ORAKLI TEKSTİL",
             collections: "Koleksiyonlar",
             atelier: "Atölye",
             contact: "İletişim"

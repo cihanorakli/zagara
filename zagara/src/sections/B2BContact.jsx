@@ -39,7 +39,7 @@ const B2BContact = () => {
             </div>
 
             <div className="copyright">
-                &copy; 2026 Zagara. {t('footer.rights')}
+                &copy; 2026 Oraklı Tekstil. {t('footer.rights')}
             </div>
         </footer>
     );
